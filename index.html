@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Presentes - Liz Sophia 1 Aninho</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #ffeef8 0%, #fff5e6 50%, #e8f5e9 100%);
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Decorações flutuantes */
+        .decoration {
+            position: fixed;
+            opacity: 0.15;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .butterfly1 {
+            top: 10%;
+            left: 5%;
+            font-size: 40px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .butterfly2 {
+            top: 60%;
+            right: 10%;
+            font-size: 35px;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .flower1 {
+            bottom: 10%;
+            left: 10%;
+            font-size: 50px;
+            animation: rotate 20s linear infinite;
+        }
+
+        .flower2 {
+            top: 30%;
+            right: 5%;
+            font-size: 45px;
+            animation: rotate 25s linear infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 30px 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px dashed #ffb6d9;
+        }
+
+        .header h1 {
+            color: #d4589f;
+            font-size: 32px;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(212, 88, 159, 0.2);
+        }
+
+        .header .name {
+            color: #8b5a8e;
+            font-size: 28px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .header .subtitle {
+            color: #7b9d7b;
+            font-size: 16px;
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        .gift-icon {
+            font-size: 50px;
+            margin: 15px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .intro {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 15px;
+            line-height: 1.6;
+            padding: 0 10px;
+        }
+
+        .gift-section {
+            background: linear-gradient(135deg, #fff9fc 0%, #fffef5 100%);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 2px solid #ffddee;
+            box-shadow: 0 5px 15px rgba(212, 88, 159, 0.1);
+        }
+
+        .gift-section h2 {
+            color: #d4589f;
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .gift-section h2::before {
+            content: '🌸';
+            font-size: 24px;
+        }
+
+        .gift-item {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border-left: 4px solid #d4589f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .gift-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(212, 88, 159, 0.2);
+        }
+
+        .gift-item h3 {
+            color: #8b5a8e;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .gift-item p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .pix-section {
+            background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            border: 2px solid #a5d6a7;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.1);
+        }
+
+        .pix-section h2 {
+            color: #4caf50;
+            font-size: 22px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pix-key {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 2px dashed #4caf50;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2e7d32;
+            letter-spacing: 1px;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #66bb6a 0%, #4caf50 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.4);
+        }
+
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+
+        .copied-msg {
+            color: #4caf50;
+            font-size: 14px;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .copied-msg.show {
+            opacity: 1;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px dashed #ffb6d9;
+            color: #999;
+            font-size: 14px;
+        }
+
+        .footer .hearts {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+
+        .footer p {
+            color: #d4589f;
+            font-style: italic;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration butterfly1">🦋</div>
+    <div class="decoration butterfly2">🦋</div>
+    <div class="decoration flower1">🌸</div>
+    <div class="decoration flower2">🌼</div>
+
+    <div class="container">
+        <div class="header">
+            <div class="gift-icon">🎁</div>
+            <h1>Lista de Presentes</h1>
+            <div class="name">Liz Sophia</div>
+            <div class="subtitle">1º Aninho - Jardim Encantado</div>
+            <div style="margin-top: 10px; font-size: 14px; color: #999;">22/12 | 20H</div>
+        </div>
+
+        <div class="intro">
+            Sua presença é o nosso maior presente! Mas se desejar presentear nossa pequena, aqui estão algumas sugestões que serão muito especiais para ela. 💝
+        </div>
+
+        <div class="gift-section">
+            <h2>Roupinhas</h2>
+            <div class="gift-item">
+                <h3>👗 Roupas em Geral</h3>
+                <p>Vestidos, conjuntos, macacões e muito mais!</p>
+            </div>
+        </div>
+
+        <div class="gift-section">
+            <h2>Calçados</h2>
+            <div class="gift-item">
+                <h3>👟 Tamanho 20/21</h3>
+                <p>Sapatinhos, sandálias, tênis e chinelos</p>
+            </div>
+        </div>
+
+        <div class="gift-section">
+            <h2>Brinquedos</h2>
+            <div class="gift-item">
+                <h3>🧸 Brinquedos Diversos</h3>
+                <p>Educativos, pelúcias, jogos e diversão!</p>
+            </div>
+        </div>
+
+        <div class="pix-section">
+            <h2>💚 Pix</h2>
+            <p style="color: #666; margin-bottom: 15px;">Prefere contribuir com pix? Ficaremos muito gratos!</p>
+            <div class="pix-key">96 99207-8175</div>
+            <button class="copy-btn" onclick="copyPix()">📋 Copiar Chave Pix</button>
+            <div class="copied-msg" id="copiedMsg">✓ Chave copiada com sucesso!</div>
+        </div>
+
+        <div class="footer">
+            <div class="hearts">💕 🌸 🦋 🌼 💕</div>
+            <p>Com amor, família da Liz Sophia</p>
+        </div>
+    </div>
+
+    <script>
+        function copyPix() {
+            const pixKey = '96992078175';
+            
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(pixKey).then(() => {
+                    showCopiedMessage();
+                }).catch(() => {
+                    fallbackCopy(pixKey);
+                });
+            } else {
+                fallbackCopy(pixKey);
+            }
+        }
+
+        function fallbackCopy(text) {
+            const textArea = document.createElement('textarea');
+            textArea.value = text;
+            textArea.style.position = 'fixed';
+            textArea.style.left = '-999999px';
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                showCopiedMessage();
+            } catch (err) {
+                alert('Chave Pix: ' + text);
+            }
+            
+            document.body.removeChild(textArea);
+        }
+
+        function showCopiedMessage() {
+            const msg = document.getElementById('copiedMsg');
+            msg.classList.add('show');
+            setTimeout(() => {
+                msg.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
